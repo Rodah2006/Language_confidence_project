@@ -4,10 +4,11 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import Category, VocabularyWord, LearnedWord, FavoriteWord, Quiz
+from .models import Category,Word, VocabularyWord, LearnedWord, FavoriteWord, Quiz
 from .serializers import (
     UserSerializer,
     CategorySerializer,
+    WordSerializer,
     VocabularyWordSerializer,
     LearnedWordSerializer,
     FavoriteWordSerializer,
@@ -50,6 +51,11 @@ class CategoryList(generics.ListAPIView):
     serializer_class = CategorySerializer
     permission_classes = [permissions.AllowAny]
 
+
+class WordListCreateView(generics.ListCreateAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
+    permission_classes= [permissions.AllowAny]
 
 class VocabularyWordList(generics.ListAPIView):
     queryset = VocabularyWord.objects.all()

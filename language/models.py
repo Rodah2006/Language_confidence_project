@@ -8,6 +8,17 @@ class Category(models.Model):
         return self.name
 
 
+class Word(models.Model):
+    text = models.CharField(max_length=100, unique=True)   # the word itself
+    meaning = models.TextField()                           # definition or explanation
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="words", null=True, blank=True
+    )  # optional: link to a category
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.text
+
 class VocabularyWord(models.Model):
     word = models.CharField(max_length=100)
     meaning = models.TextField()

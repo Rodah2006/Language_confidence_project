@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Category, VocabularyWord, LearnedWord, FavoriteWord, Quiz
+from .models import Category,Word, VocabularyWord, LearnedWord, FavoriteWord, Quiz
 
 # Serializer for the User model
 class UserSerializer(serializers.ModelSerializer):
@@ -13,6 +13,11 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']
+# Serializer for Word
+class WordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Word
+        fields = '__all__'
 
 # Serializer for Vocabulary Words
 class VocabularyWordSerializer(serializers.ModelSerializer):

@@ -3,6 +3,7 @@ from .views import (
     RegisterUser,
     LoginUser,
     CategoryList,
+    WordListCreateView,
     VocabularyWordList,
     VocabularyWordDetail,
     LearnedWordListCreate,
@@ -18,6 +19,9 @@ urlpatterns = [
 
     # Categories
     path('categories/', CategoryList.as_view(), name='categories'),
+
+    # Words (basic Word model API)
+    path('word/', WordListCreateView.as_view(), name='word'),
 
     # Vocabulary
     path('words/', VocabularyWordList.as_view(), name='words'),
